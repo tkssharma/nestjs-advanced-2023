@@ -1,4 +1,4 @@
-# nestjs-advanced-2022
+# nestjs-advanced-2023
 
 ![](nest.jpg)
 
