@@ -1,0 +1,20 @@
+# Custom
+/packages/*/build/**
+/packages/*/coverage/**
+/node_modules/**
+package-lock.json
+./package.json
+tmp
+dist
+*/dist
+./**/.next
+
+*.yml
+*.json
+*.next
+/packages/**/build
+/packages/**/dist
+/apps/**/build
+/apps/**/dist
+/infra/**/build
+/infra/**/dist

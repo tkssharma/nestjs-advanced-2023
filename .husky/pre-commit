@@ -1,0 +1,5 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+if [ "$NO_VERIFY_YOLO" ]; then exit 0; fi
+npm run lint && npm run prettier
