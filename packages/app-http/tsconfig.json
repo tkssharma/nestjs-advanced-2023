@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "lib": ["ESNext"],
+    "downlevelIteration": true,
+    "importHelpers": true,
+    "module": "commonjs",
+    "declaration": true,
+    "strict": true,
+    "pretty": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "experimentalDecorators": true,
+    "outDir": "./build",
+    "rootDir": "./src"
+  },
+  "exclude": ["node_modules", "build"]
+}
