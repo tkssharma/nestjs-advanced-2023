@@ -4,18 +4,17 @@ Course for my youtube channel 2023
 
 ## Module 01 [8th May 2023]
 
-| Item              | Video | Playlist | Module |
-| :---------------- | :------: | ----: | ------:|
-| Building Dynamic Nest JS Modules with Basics        |   https://www.youtube.com/watch?v=iS0h5VRCdDA&list=PLT5Jhb7lgSBO9QxATpVy0xyiMyn1fSCCx&index=3    |  |        |
-| Core concepts of nestjs [Controllers, routing and the module structure]           |   https://www.youtube.com/watch?v=ypxjFrxeu20&list=PLT5Jhb7lgSBO9QxATpVy0xyiMyn1fSCCx&index=4   |  |        |
-| Baseline code + PNPM with Nx + Github [Introduction to a monorepo with and Yarn workspaces]    |  https://www.youtube.com/watch?v=iS0h5VRCdDA&list=PLT5Jhb7lgSBO9QxATpVy0xyiMyn1fSCCx&index=3   |  |        |
-| Modules, Services, DI framework [Nest JS DI Framework] |  https://www.youtube.com/watch?v=ODFOFS3bA4U&list=PLT5Jhb7lgSBO9QxATpVy0xyiMyn1fSCCx&index=5    | |        |
-| Setting up a PostgreSQL database with TypeORM | https://www.youtube.com/watch?v=ypxjFrxeu20&list=PLT5Jhb7lgSBO9QxATpVy0xyiMyn1fSCCx&index=4 |||
-| API with Nest JS (Middleware, Interceptors, AuthGuards) | https://www.youtube.com/watch?v=b0uIb00MFKI&list=PLT5Jhb7lgSBO9QxATpVy0xyiMyn1fSCCx&index=6 |||
-| API with NestJS Creating dynamic modules as monorepo package | https://www.youtube.com/watch?v=j-ruR1w1uIU&list=PLT5Jhb7lgSBO9QxATpVy0xyiMyn1fSCCx&index=8 | | | 
-| API with NestJS Defining dynamic modules | https://www.youtube.com/watch?v=fxktWWmClIo&list=PLT5Jhb7lgSBO9QxATpVy0xyiMyn1fSCCx&index=9 | | |
-| APIs with Nest JS Resolve Cicular Dependancies | https://www.youtube.com/watch?v=2OUTtVi-wjA&list=PLT5Jhb7lgSBO9QxATpVy0xyiMyn1fSCCx&index=7 | | | 
-
+| Item              | Video |
+| :---------------- | :------: | 
+| Building Dynamic Nest JS Modules with Basics        |   https://www.youtube.com/watch?v=iS0h5VRCdDA&list=PLT5Jhb7lgSBO9QxATpVy0xyiMyn1fSCCx&index=3    |  
+| Core concepts of nestjs [Controllers, routing and the module structure]           |   https://www.youtube.com/watch?v=ypxjFrxeu20&list=PLT5Jhb7lgSBO9QxATpVy0xyiMyn1fSCCx&index=4   | 
+| Baseline code + PNPM with Nx + Github [Introduction to a monorepo with and Yarn workspaces]    |  https://www.youtube.com/watch?v=iS0h5VRCdDA&list=PLT5Jhb7lgSBO9QxATpVy0xyiMyn1fSCCx&index=3   |        |
+| Modules, Services, DI framework [Nest JS DI Framework] |  https://www.youtube.com/watch?v=ODFOFS3bA4U&list=PLT5Jhb7lgSBO9QxATpVy0xyiMyn1fSCCx&index=5    | 
+| Setting up a PostgreSQL database with TypeORM | https://www.youtube.com/watch?v=ypxjFrxeu20&list=PLT5Jhb7lgSBO9QxATpVy0xyiMyn1fSCCx&index=4 |
+| API with Nest JS (Middleware, Interceptors, AuthGuards) | https://www.youtube.com/watch?v=b0uIb00MFKI&list=PLT5Jhb7lgSBO9QxATpVy0xyiMyn1fSCCx&index=6 |
+| API with NestJS Creating dynamic modules as monorepo package | https://www.youtube.com/watch?v=j-ruR1w1uIU&list=PLT5Jhb7lgSBO9QxATpVy0xyiMyn1fSCCx&index=8 | 
+| API with NestJS Defining dynamic modules | https://www.youtube.com/watch?v=fxktWWmClIo&list=PLT5Jhb7lgSBO9QxATpVy0xyiMyn1fSCCx&index=9 |
+| APIs with Nest JS Resolve Cicular Dependancies | https://www.youtube.com/watch?v=2OUTtVi-wjA&list=PLT5Jhb7lgSBO9QxATpVy0xyiMyn1fSCCx&index=7 | 
 - 1 Building Dynamic Nest JS Modules with Basics
 - 2 Core concepts of nestjs [Controllers, routing and the module structure]
 - 3 Baseline code + PNPM with Nx + Github [Introduction to a monorepo with and Yarn workspaces]
