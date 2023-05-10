@@ -31,7 +31,8 @@ Course for my youtube channel 2023
 | Item              | Video | Playlist | Module |
 | :---------------- | :------: | ----: | ------:|
 
-- Error handling and data validation
+- Dockerizing Nest JS Application 
+- Error handling and data validation class validator nested payloads
 - Dynamic Module for TypeORM with Config Module 
 - Building TypeORM Entities  
 - Database migrations with TypeORM
