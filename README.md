@@ -41,7 +41,17 @@ Course for my youtube channel 2023
 - Using the array data type with PostgreSQL and TypeORM
 - Offset and keyset pagination with PostgreSQL and TypeORM
 
-## Module 03 [11th May 2023]
+### Nest JS with all Different Database and ORMs
+
+- Nest JS with Mongo DB for Building APIs
+- Nest JS with Prisma ORM for Building APIs
+- Nest JS with TypeORM for Building APIs
+- Nest JS with Sequelize ORM for Building APIs
+- Nest JS with MikoORM for building APIs
+- Nest JS with Dynamo DB for Building APIs
+- Nest JS with Knex ORM for Building APIs
+
+## Module 03 [30th May 2023]
 
 
 | Item              | Video | Playlist | Module |
