@@ -62,8 +62,49 @@ Course for my youtube channel 2023
 
 - Writing unit tests
 - Testing services and controllers with integration tests
-- Nest JS Testing Middleware, Controller and services 
+- Nest JS Testing Middleware, Controller and services
 
+## Module 04 [July 2023]
+
+
+| Item              | Video | Playlist | Module |
+| :---------------- | :------: | ----: | ------:|
+
+- Nest JS caching
+- Nest JS  event emitter
+- Nest JS task scheduling
+- Nest JS SSE
+- Nest JS Websockets
+- Nest JS Queues 
+- Nest JS with Fastify adaptor  
+- Nest JS Integration with Redis
+- Nest JS Integration with database
+- Nest JS Integration with sendGrid
+- Nest JS Integration with Twilio
+- Nest JS Integration with rx js
+- Nest JS Integration with Websocket
+
+- ## Module 05 [July 2023]
+
+| Item              | Video | Playlist | Module |
+| :---------------- | :------: | ----: | ------:|
+
+- Nest JS Graphql
+- Nest JS Code First
+- Nest JS Schema First
+- Nest JS Graphql Prisma
+- Nest JS APIs
+
+
+- ## Module 06 [July 2023]
+
+| Item              | Video | Playlist | Module |
+| :---------------- | :------: | ----: | ------:|
+
+- Nest JS Microservices TCP
+- Nest JS Microservices GRPC
+- Nest JS Microservices AMQP
+- Nest JS Microservices KAFKA
 
 Planned Videos on these topics
 
