@@ -1,0 +1,9 @@
+model User {
+  id            Int         @default(autoincrement()) @id
+  email         String      @unique
+  name          String
+  password      String
+  address       Address?     @relation(fields: [addressId], references: [id])
+  addressId     Int?
+  posts         Post[]
+}
