@@ -1,7 +1,7 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
-import { User } from '@prisma/client';
-import { PrismaService } from 'src/prisma/prisma.service';
-import { CreatePostDto, UpdatePostDto } from './dto/create-post.dto';
+import { Injectable, NotFoundException } from "@nestjs/common";
+import { User } from "@prisma/client";
+import { PrismaService } from "src/prisma/prisma.service";
+import { CreatePostDto, UpdatePostDto } from "./dto/create-post.dto";
 
 @Injectable()
 export class PostsService {
@@ -17,9 +17,6 @@ export class PostsService {
             id: user.id,
           },
         },
-      },
-      include: {
-        category: true,
       },
     });
   }
@@ -41,7 +38,7 @@ export class PostsService {
       },
     });
     if (!post) {
-      throw new NotFoundException('post not found');
+      throw new NotFoundException("post not found");
     }
     return post;
   }

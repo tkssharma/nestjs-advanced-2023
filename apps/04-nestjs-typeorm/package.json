@@ -1,5 +1,5 @@
 {
-  "name": "@dev/nestjs-typeorm-apis",
+  "name": "@dev/nestjs-typeorm-04",
   "version": "0.0.1",
   "description": "",
   "author": "",
@@ -34,7 +34,7 @@
     "@nestjs/common": "^9.0.0",
     "@nestjs/core": "^9.0.0",
     "@nestjs/platform-express": "^9.0.0",
-    "@nestjs/swagger": "^6.3.0",
+    "@nestjs/swagger": "^7.1.1",
     "@nestjs/typeorm": "^9.0.1",
     "@types/uuid": "^8.3.4",
     "class-transformer": "^0.5.1",

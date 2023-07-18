@@ -1,3 +1,3 @@
 export enum PrismaError {
-  RecordDoesNotExist = 'P2025',
+  RecordDoesNotExist = "P2025",
 }

@@ -28,6 +28,7 @@ import { UserMetaData } from '../interface';
 @Injectable()
 export class RestaurantService {
   constructor(
+    private readonly dataSource: DataSource,
     @InjectRepository(RestaurantEntity)
     private restaurantRepo: Repository<RestaurantEntity>,
     @InjectRepository(RestaurantAddressEntity)
@@ -41,7 +42,10 @@ export class RestaurantService {
     const { id } = param;
     const response = await this.restaurantRepo.findOne({
       where: { id },
-      relations: ['dishes'],
+      select: { id: true, name: true },
+      relations: {
+        dishes: true,
+      },
     });
     const address = await this.restaurantAddRepo.findOne({
       where: { restaurant: { id } },
@@ -54,17 +58,38 @@ export class RestaurantService {
   }
 
   async getAllMyRestaurants(user: UserMetaData) {
-    const { uid } = user;
     return await this.restaurantRepo.find({
-      where: { owner_id: uid },
       relations: ['dishes'],
     });
   }
 
   async search(queryParam: SearchQueryDto) {
+    return await this.restaurantRepo.find({
+      select: {
+        id: true,
+        name: true,
+        description: true,
+        delivery_options: true,
+      },
+      where: [
+        {
+          name: Like(`%${queryParam.search_text}%`),
+        },
+        {
+          description: Like(`%${queryParam.search_text}%`),
+        },
+      ],
+      relations: {
+        dishes: true,
+      },
+      take: 5,
+      skip: 0,
+    });
+
+    /*
     const { search_text, limit, page } = queryParam;
     const offset = limit * (page - 1);
-    const query = this.connection
+    const query = this.dataSource
       .getRepository(RestaurantEntity)
       .createQueryBuilder('restaurant')
       .leftJoinAndSelect('restaurant.dishes', 'dishes');
@@ -87,19 +112,19 @@ export class RestaurantService {
       .skip(offset || 0)
       .take(limit || 10)
       .getMany();
+  */
   }
 
-  async createRestaurant(user: UserMetaData, payload: CreateRestaurantBodyDto) {
+  async createRestaurant(payload: CreateRestaurantBodyDto) {
     let createdRestaurant = null;
     console.log(payload);
-    const queryRunner = this.connection.createQueryRunner();
+    const queryRunner = this.dataSource.createQueryRunner();
     try {
       await queryRunner.connect();
       await queryRunner.startTransaction();
 
       createdRestaurant = await this.createUserRestaurant(
-        payload,
-        user,
+        { ...payload, restaurant_address: payload.address },
         queryRunner,
       );
       await this.createAddress(payload.address, createdRestaurant, queryRunner);
@@ -112,13 +137,8 @@ export class RestaurantService {
       await queryRunner.release();
     }
   }
-  async createUserRestaurant(
-    payload,
-    user: UserMetaData,
-    queryRunner: QueryRunner,
-  ) {
+  async createUserRestaurant(payload, queryRunner: QueryRunner) {
     return await queryRunner.manager.save(RestaurantEntity, {
-      owner_id: user.uid,
       ...payload,
     });
   }
