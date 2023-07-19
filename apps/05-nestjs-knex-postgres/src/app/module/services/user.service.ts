@@ -1,5 +1,3 @@
-import { PartialType } from '@nestjs/mapped-types';
-
 import {
   HttpException,
   HttpStatus,
@@ -21,14 +19,17 @@ export default class UsersService {
 
   async create(createUserDto: CreateUserDto) {
     try {
-      const users = await this.knex.table('users').insert({
-        firstName: createUserDto.firstName,
-        lastName: createUserDto.lastName,
-        email: createUserDto.email,
-      });
+      const users = await this.knex.table('users').insert(
+        {
+          firstName: createUserDto.firstName,
+          lastName: createUserDto.lastName,
+          email: createUserDto.email,
+        },
+        '*',
+      );
 
-      return { users };
-    } catch (err) {
+      return users;
+    } catch (err: any) {
       throw new HttpException(err, HttpStatus.BAD_REQUEST);
     }
   }
@@ -49,7 +50,7 @@ export default class UsersService {
       });
 
       return { users };
-    } catch (err) {
+    } catch (err: any) {
       throw new HttpException(err, HttpStatus.BAD_REQUEST);
     }
   }

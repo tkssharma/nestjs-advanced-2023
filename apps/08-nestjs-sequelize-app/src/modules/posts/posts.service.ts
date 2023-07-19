@@ -4,40 +4,41 @@ import { Post } from './post.entity';
 import { PostDto } from './dto/post.dto';
 import { User } from '../users/user.entity';
 import { POST_REPOSITORY } from '../../core/constants';
+import { InjectModel } from '@nestjs/sequelize';
 
 @Injectable()
 export class PostsService {
   constructor(
-    @Inject(POST_REPOSITORY) private readonly postRepository: typeof Post,
+    @InjectModel(Post)
+    private postModel: typeof Post,
   ) {}
 
   async create(post: PostDto, userId): Promise<Post> {
-    return await this.postRepository.create<Post>({ ...post, userId });
+    return this.postModel.create<Post>({ ...post, userId });
   }
 
   async findAll(): Promise<Post[]> {
-    return await this.postRepository.findAll<Post>({
+    return await this.postModel.findAll<Post>({
       include: [{ model: User, attributes: { exclude: ['password'] } }],
     });
   }
 
   async findOne(id): Promise<Post> {
-    return await this.postRepository.findOne({
+    return await this.postModel.findOne({
       where: { id },
       include: [{ model: User, attributes: { exclude: ['password'] } }],
     });
   }
 
   async delete(id, userId) {
-    return await this.postRepository.destroy({ where: { id, userId } });
+    return await this.postModel.destroy({ where: { id, userId } });
   }
 
   async update(id, data, userId) {
-    const [numberOfAffectedRows, [updatedPost]] =
-      await this.postRepository.update(
-        { ...data },
-        { where: { id, userId }, returning: true },
-      );
+    const [numberOfAffectedRows, [updatedPost]] = await this.postModel.update(
+      { ...data },
+      { where: { id, userId }, returning: true },
+    );
     return { numberOfAffectedRows, updatedPost };
   }
 }

@@ -1,5 +1,4 @@
 import { DynamicModule, Module } from '@nestjs/common';
-import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 import {
   KnexModule,
   KnexModuleAsyncOptions,
@@ -29,9 +28,7 @@ export class DbModule {
     };
   }
 
-  private static getConnectionOptionsPostgres(
-    dbdata: ConfigDBData,
-  ): TypeOrmModuleOptions {
+  private static getConnectionOptionsPostgres(dbdata: ConfigDBData): any {
     return {
       type: 'postgres',
       url: dbdata.url,
