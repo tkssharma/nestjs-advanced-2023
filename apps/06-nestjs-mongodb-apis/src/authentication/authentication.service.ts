@@ -22,7 +22,7 @@ export class AuthenticationService {
         ...registrationData,
         password: hashedPassword,
       });
-    } catch (error) {
+    } catch (error: any) {
       if (error?.code === MongoError.DuplicateKey) {
         throw new HttpException(
           'User with that email already exists',

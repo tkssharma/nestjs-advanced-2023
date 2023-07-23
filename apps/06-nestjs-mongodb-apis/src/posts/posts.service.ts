@@ -67,7 +67,7 @@ class PostsService {
       ...postData,
       author,
     });
-    await createdPost.populate('categories').populate('series').execPopulate();
+    await createdPost.populate('categories');
     return createdPost.save();
   }
 
@@ -88,13 +88,6 @@ class PostsService {
     if (!result) {
       throw new NotFoundException();
     }
-  }
-
-  async deleteMany(
-    ids: string[],
-    session: mongoose.ClientSession | null = null,
-  ) {
-    return this.postModel.deleteMany({ _id: ids }).session(session);
   }
 }
 

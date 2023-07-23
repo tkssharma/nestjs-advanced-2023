@@ -24,12 +24,10 @@ import { EventEmitter2 } from '@nestjs/event-emitter';
 import { off } from 'process';
 import { groupBy } from '../utility';
 import { UserMetaData } from '../interface';
-import { PrismaService } from '../../shared/prisma.service';
 
 @Injectable()
 export class RestaurantService {
   constructor(
-    private prisma: PrismaService,
     private readonly dataSource: DataSource,
     @InjectRepository(RestaurantEntity)
     private restaurantRepo: Repository<RestaurantEntity>,

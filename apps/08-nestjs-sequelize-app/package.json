@@ -32,7 +32,7 @@
     "@nestjs/config": "^2.3.1",
     "@nestjs/core": "^9.0.0",
     "@nestjs/elasticsearch": "^10.0.1",
-    "@nestjs/jwt": "^10.0.3",
+    "@nestjs/jwt": "^9.0.0",
     "@nestjs/passport": "^10.0.0",
     "@nestjs/platform-express": "^9.0.0",
     "@nestjs/sequelize": "^10.0.0",

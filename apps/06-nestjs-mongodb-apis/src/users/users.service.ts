@@ -47,14 +47,12 @@ class UsersService {
 
   async create(userData: CreateUserDto) {
     const createdUser = new this.userModel(userData);
-    await createdUser
-      .populate({
-        path: 'posts',
-        populate: {
-          path: 'categories',
-        },
-      })
-      .execPopulate();
+    await createdUser.populate({
+      path: 'posts',
+      populate: {
+        path: 'categories',
+      },
+    });
     return createdUser.save();
   }
 
@@ -73,10 +71,6 @@ class UsersService {
       }
       const posts = user.posts;
 
-      await this.postsService.deleteMany(
-        posts.map((post) => post._id.toString()),
-        session,
-      );
       await session.commitTransaction();
     } catch (error) {
       await session.abortTransaction();

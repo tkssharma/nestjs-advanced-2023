@@ -14,10 +14,12 @@ import { EventEmitterModule } from '@nestjs/event-emitter';
 import { RestaurantDishController } from './restaurant/controller/restaurant.dish.controller';
 import { RestaurantDishService } from './restaurant/services/restaurant.dish.service';
 import { DishController } from './restaurant/controller/dish.controller';
+import { GithubModule } from './github/github.module';
 
 @Module({
   imports: [
     EventEmitterModule.forRoot(),
+    GithubModule,
     TypeOrmModule.forFeature([
       RestaurantEntity,
       RestaurantDishEntity,

@@ -3,3 +3,7 @@ services:
   postgres-user:
     image: postgres
     restart: unless-stopped
+  mongodb: 
+    image: mongo
+  redis: 
+    image: redis:latest

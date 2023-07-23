@@ -10,5 +10,18 @@ services:
       - test_api_data:/data/postgres
     ports:
       - 5432:5432
+  mongodb: 
+    volumes:
+      - mongodata:/data/db
+    ports:
+      - "27017:27017"   
+  redis:
+    ports:
+      - '6379:6379'
+    command: redis-server --loglevel warning
+    volumes:
+      - cache:/data          
 volumes:
   test_api_data: {}
+  mongodata: {}
+  cache: {}
