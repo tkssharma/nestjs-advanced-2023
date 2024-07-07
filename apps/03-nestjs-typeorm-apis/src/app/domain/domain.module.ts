@@ -21,6 +21,7 @@ import { UsersAddressEntity } from './users/user-address.entity';
 import { RestaurantEntity } from './restaurant/restaurant.entity';
 import { RestaurantDishEntity } from './restaurant/restaurant-dish.entity';
 import { RestaurantAddressEntity } from './restaurant/restaurant-address.entity';
+import { DevtoolsModule } from '@nestjs/devtools-integration';
 export const GLOBAL_PREFIX = '/api/v1';
 
 /*
