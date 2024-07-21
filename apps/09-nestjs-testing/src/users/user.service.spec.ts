@@ -35,16 +35,16 @@ describe('UsersService', () => {
   it('create => Should create a new user and return its data', async () => {
     // arrange
     const createUserDto = {
-      firstname: 'Chadwick',
-      lastname: 'Boseman',
-      email: 'chadwickboseman@email.com',
+      firstname: 'ok',
+      lastname: 'ok',
+      email: 'ok@email.com',
     } as CreateUserDto;
 
     const user = {
       id: Date.now(),
-      firstname: 'Chadwick',
-      lastname: 'Boseman',
-      email: 'chadwickboseman@email.com',
+      firstname: 'ok',
+      lastname: 'ok',
+      email: 'ok@email.com',
     } as User;
 
     jest.spyOn(mockUserRepository, 'save').mockReturnValue(user);
@@ -63,9 +63,9 @@ describe('UsersService', () => {
     //arrange
     const user = {
       id: Date.now(),
-      firstname: 'Chadwick',
-      lastname: 'Boseman',
-      email: 'chadwickboseman@email.com',
+      firstname: 'ok',
+      lastname: 'ok',
+      email: 'ok@email.com',
     };
     const users = [user];
     jest.spyOn(mockUserRepository, 'find').mockReturnValue(users);
@@ -83,9 +83,9 @@ describe('UsersService', () => {
     const id = 1;
     const user = {
       id: 1,
-      firstname: 'Chadwick',
-      lastname: 'Boseman',
-      email: 'chadwickboseman@email.com',
+      firstname: 'ok',
+      lastname: 'ok',
+      email: 'ok@email.com',
     };
 
     jest.spyOn(mockUserRepository, 'findOne').mockReturnValue(user);
@@ -102,9 +102,9 @@ describe('UsersService', () => {
     const id = 1;
     const user = {
       id: 1,
-      firstname: 'Chadwick',
-      lastname: 'Boseman',
-      email: 'chadwickboseman@email.com',
+      firstname: 'ok',
+      lastname: 'ok',
+      email: 'ok@email.com',
     };
 
     jest.spyOn(mockUserRepository, 'delete').mockReturnValue(user);

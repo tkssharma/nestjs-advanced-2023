@@ -37,16 +37,16 @@ describe('UsersController', () => {
   it('create => should create a new user by a given data', async () => {
     // arrange
     const createUserDto = {
-      firstname: 'Chadwick',
-      lastname: 'Boseman',
-      email: 'chadwickboseman@email.com',
+      firstname: 'ok',
+      lastname: 'ok',
+      email: 'ok@email.com',
     } as CreateUserDto;
 
     const user = {
       id: Date.now(),
-      firstname: 'Chadwick',
-      lastname: 'Boseman',
-      email: 'chadwickboseman@email.com',
+      firstname: 'ok',
+      lastname: 'ok',
+      email: 'ok@email.com',
     } as User;
 
     jest.spyOn(mockUsersService, 'create').mockReturnValue(user);
@@ -65,9 +65,9 @@ describe('UsersController', () => {
     //arrange
     const user = {
       id: Date.now(),
-      firstname: 'Chadwick',
-      lastname: 'Boseman',
-      email: 'chadwickboseman@email.com',
+      firstname: 'ok',
+      lastname: 'ok',
+      email: 'ok@email.com',
     };
     const users = [user];
     jest.spyOn(mockUsersService, 'findAll').mockReturnValue(users);
@@ -85,9 +85,9 @@ describe('UsersController', () => {
     const id = '1';
     const user = {
       id: 1,
-      firstname: 'Chadwick',
-      lastname: 'Boseman',
-      email: 'chadwickboseman@email.com',
+      firstname: 'ok',
+      lastname: 'ok',
+      email: 'ok@email.com',
     };
 
     jest.spyOn(mockUsersService, 'findOne').mockReturnValue(user);
@@ -104,15 +104,15 @@ describe('UsersController', () => {
     //arrange
     const id = '1';
     const updateUserDto = {
-      firstname: 'Chadwick',
-      lastname: 'Boseman',
-      email: 'chadwickboseman@email.com',
+      firstname: 'ok',
+      lastname: 'ok',
+      email: 'ok@email.com',
     } as UpdateUserDto;
     const user = {
       id: 1,
-      firstname: 'Chadwick',
-      lastname: 'Boseman',
-      email: 'chadwickboseman@email.com',
+      firstname: 'ok',
+      lastname: 'ok',
+      email: 'ok@email.com',
     };
 
     jest.spyOn(mockUsersService, 'update').mockReturnValue(user);

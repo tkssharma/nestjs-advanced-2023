@@ -32,6 +32,11 @@ export class UsersService {
     return await this.userRepository.save(updated);
   }
 
+  public async checkIfUserAlreadyExists(email: string): Promise<boolean> {
+    const user = await this.userRepository.findOne({ where: { email } });
+    return !!user;
+  }
+
   async remove(id: number) {
     return await this.userRepository.delete(id);
   }

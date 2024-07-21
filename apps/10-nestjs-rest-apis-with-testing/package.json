@@ -1,5 +1,5 @@
 {
-  "name": "@dev/nestjs-testing",
+  "name": "@dev/nestjs-rest-api-testing",
   "version": "0.0.1",
   "description": "",
   "author": "",
@@ -24,6 +24,7 @@
     "@nestjs/common": "^9.0.0",
     "@nestjs/config": "^2.3.0",
     "@nestjs/core": "^9.0.0",
+    "@nestjs/devtools-integration": "^0.1.6",
     "@nestjs/jwt": "^9.0.0",
     "@nestjs/passport": "^10.0.0",
     "@sendgrid/mail": "^7.7.0",
@@ -36,7 +37,8 @@
     "passport-local": "^1.0.0",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^5.0.0",
-    "rxjs": "^7.8.0"
+    "rxjs": "^7.8.0",
+    "typeorm": "^0.3.12"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.6.1",
@@ -59,34 +61,15 @@
     "eslint": "8.44.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-import": "^2.27.5",
+    "jest": "^29.5.0",
     "jest-mock-extended": "^3.0.4",
     "prettier": "^3.0.0",
     "supertest": "^6.3.3",
     "ts-jest": "^29.1.0",
-    "jest": "^29.5.0",
     "ts-loader": "^9.4.2",
     "ts-mockito": "^2.6.1",
     "ts-node": "^10.9.1",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.0.4"
-  },
-  "jest": {
-    "moduleFileExtensions": [
-      "js",
-      "json",
-      "ts"
-    ],
-    "rootDir": "src",
-    "testRegex": ".spec.ts$",
-    "transform": {
-      "^.+\\.(t|j)s$": "ts-jest"
-    },
-    "coverageDirectory": "../coverage",
-    "coveragePathIgnorePatterns": [
-      "/node_modules/",
-      ".*(stub.ts)$"
-    ],
-    "testEnvironment": "node",
-    "preset": "ts-jest"
   }
 }
