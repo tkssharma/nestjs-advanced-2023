@@ -52,7 +52,9 @@ describe('Cat Controller', () => {
       const retCats = controller.getAllCats();
       expect(typeof retCats).toBe('object');
       expect(retCats[0].id).toBe(1);
+      expect(retCats[0].name).toBe('Test Cat 1');
       expect(retCats[1].name).toBe('Test Cat 2');
+      expect(retCats[1].id).toBe(2);
       expect(retCats.length).toBe(2);
     });
   });
