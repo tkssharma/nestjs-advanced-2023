@@ -1,6 +1,7 @@
 import { Module } from "@nestjs/common";
 import { DbConfig } from "./db.interface";
 import { TypeOrmModule, TypeOrmModuleOptions } from "@nestjs/typeorm";
+import {} from "@nestjs/sequelize";
 import { ConfigModule } from "@dev/config";
 import { ConfigService } from "@dev/config";
 import { ConfigDatabase } from "@dev/config";
@@ -38,21 +39,39 @@ export class DBModule {
     };
   }
 
-  public static forRoot(dbConfig: DbConfig) {
-    return {
-      module: DBModule,
-      imports: [
-        TypeOrmModule.forRootAsync({
-          imports: [ConfigModule],
-          useFactory: (configService: ConfigService) => {
-            return DBModule.getConnectionOptions(configService, dbConfig);
-          },
-          inject: [ConfigService],
-        }),
-      ],
-      controllers: [],
-      providers: [],
-      exports: [],
-    };
+  public static forRoot(dbConfig: DbConfig, type?: string) {
+    if (type === "typeorm") {
+      return {
+        module: DBModule,
+        imports: [
+          TypeOrmModule.forRootAsync({
+            imports: [ConfigModule],
+            useFactory: (configService: ConfigService) => {
+              return DBModule.getConnectionOptions(configService, dbConfig);
+            },
+            inject: [ConfigService],
+          }),
+        ],
+        controllers: [],
+        providers: [],
+        exports: [],
+      };
+    } else if (type === "sequelize") {
+      return {
+        module: DBModule,
+        imports: [
+          seq.forRootAsync({
+            imports: [ConfigModule],
+            useFactory: (configService: ConfigService) => {
+              return DBModule.getConnectionOptions(configService, dbConfig);
+            },
+            inject: [ConfigService],
+          }),
+        ],
+        controllers: [],
+        providers: [],
+        exports: [],
+      };
+    }
   }
 }

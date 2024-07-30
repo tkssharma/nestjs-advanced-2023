@@ -6,6 +6,7 @@
     "nx-build-all":"nx run-many --target=build",
     "lint": "node node_modules/prettier/bin-prettier --check \"**/*.{js,json,ts,yml,yaml}\"",
     "prepare": "husky install",
+    "test": "pnpm run -r test",
     "prettier": "node node_modules/prettier/bin-prettier --check '**/*.{js,json,ts,yml,yaml}'",
     "prettier:write": "node node_modules/prettier/bin-prettier --write \"**/*.{js,json,ts,yml,yaml}\""
   },

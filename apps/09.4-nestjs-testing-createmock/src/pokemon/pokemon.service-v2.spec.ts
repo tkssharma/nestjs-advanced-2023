@@ -1,4 +1,3 @@
-import { createMock, DeepMocked } from '@golevelup/ts-jest';
 import { HttpService } from '@nestjs/axios';
 import {
   BadRequestException,
@@ -6,6 +5,7 @@ import {
 } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 import { PokemonService } from './pokemon.service';
+import { createMock, DeepMocked } from '@golevelup/ts-jest';
 
 describe('PokemonService', () => {
   let pokemonService: PokemonService;
