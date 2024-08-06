@@ -16,7 +16,7 @@ export class TasksService {
   }
 
   // @Timeout(5000)
-  @Cron(CronExpression.EVERY_WEEKDAY)
+  @Cron(CronExpression.EVERY_10_SECONDS)
   handleTimeout() {
     this.logger.debug('Called once after 5 seconds');
   }

@@ -14,14 +14,14 @@
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
-    "test": "npm run test:ci",
     "test:unit": "jest",
     "test:migration": "dotenv -e env.test --  typeorm migration:run -t each",
+    "test": "npm run test:ci",
     "test:ci": "NODE_ENV=CI jest --ci none --testPathPattern='src' --forceExit true --collectCoverage --maxWorkers 2 --detectOpenHandles",
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest.config-e2e.json"
+    "test:e2e": "jest --config jest.config-e2e.js"
   },
   "dependencies": {
     "@dev/config": "*",

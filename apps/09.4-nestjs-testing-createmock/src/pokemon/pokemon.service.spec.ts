@@ -18,14 +18,6 @@ describe('PokemonService', () => {
           provide: HttpService,
           useValue: createMock<HttpService>(),
         },
-        {
-          provide: CacheService,
-          useValue: createMock<CacheService>(),
-        },
-        {
-          provide: LoggingService,
-          useValue: createMock<LoggingService>(),
-        },
       ],
     }).compile();
 

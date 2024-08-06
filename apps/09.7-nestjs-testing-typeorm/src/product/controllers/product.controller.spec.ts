@@ -73,13 +73,17 @@ describe('ProductController', () => {
         ProductService,
         { provide: UserService, useValue: mockUserService },
         {
+          provide: ProductService,
+          useValue: mockProductService,
+        },
+        {
           provide: JwtGuard,
           useValue: jest.fn().mockImplementation(() => true),
         },
       ],
     })
-      .overrideProvider(ProductService)
-      .useValue(mockProductService)
+      // .overrideProvider(ProductService)
+      // .useValue(mockProductService)
       .compile();
 
     productService = moduleRef.get<ProductService>(ProductService);

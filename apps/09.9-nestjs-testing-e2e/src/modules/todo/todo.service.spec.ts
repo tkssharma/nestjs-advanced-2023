@@ -31,10 +31,6 @@ describe('TodoService', () => {
   });
 
   describe('#getAll', () => {
-    beforeEach(() => {
-      jest.spyOn(mockDataBaseService, 'getAll');
-    });
-
     it('should be defined', () => {
       expect(service.getAll).toBeDefined();
     });

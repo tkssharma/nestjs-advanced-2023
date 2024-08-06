@@ -11,7 +11,9 @@ describe('AuthController', () => {
       providers: [
         {
           provide: AuthService,
-          useValue: {},
+          useValue: {
+            // mock methods here
+          },
         },
       ],
     }).compile();

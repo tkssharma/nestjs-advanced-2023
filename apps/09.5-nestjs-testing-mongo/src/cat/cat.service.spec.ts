@@ -94,10 +94,13 @@ describe('CatService', () => {
   // this way all of our mongo functions can and will be called
   // properly allowing for us to successfully test them.
   it('should return all cats', async () => {
+    // spy
     jest.spyOn(model, 'find').mockReturnValue({
       exec: jest.fn().mockResolvedValueOnce(catDocArray),
     } as unknown as Query<CatDoc[], CatDoc>);
+    // ca;; actual method
     const cats = await service.getAll();
+    // assert result with mock value
     expect(cats).toEqual(catArray);
   });
   it('should getOne by id', async () => {

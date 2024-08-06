@@ -31,13 +31,13 @@ export class AuthService {
 
   registerAccount(user: User): Observable<User> {
     const { givenName, familyName, email, password } = user;
-
+    console.log(user);
     return this.doesUserExist(email).pipe(
       tap((doesUserExist: boolean) => {
         if (doesUserExist)
           throw new HttpException(
             'A user has already been created with this email address',
-            HttpStatus.BAD_REQUEST,
+            HttpStatus.INTERNAL_SERVER_ERROR,
           );
       }),
       switchMap(() => {

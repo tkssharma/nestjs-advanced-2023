@@ -20,7 +20,7 @@ export class DBModule {
     return {
       ...connectionOptions,
       entities: dbConfig.entities,
-      synchronize: false,
+      synchronize: true,
       logging: true,
     };
   }
@@ -39,39 +39,21 @@ export class DBModule {
     };
   }
 
-  public static forRoot(dbConfig: DbConfig, type?: string) {
-    if (type === "typeorm") {
-      return {
-        module: DBModule,
-        imports: [
-          TypeOrmModule.forRootAsync({
-            imports: [ConfigModule],
-            useFactory: (configService: ConfigService) => {
-              return DBModule.getConnectionOptions(configService, dbConfig);
-            },
-            inject: [ConfigService],
-          }),
-        ],
-        controllers: [],
-        providers: [],
-        exports: [],
-      };
-    } else if (type === "sequelize") {
-      return {
-        module: DBModule,
-        imports: [
-          seq.forRootAsync({
-            imports: [ConfigModule],
-            useFactory: (configService: ConfigService) => {
-              return DBModule.getConnectionOptions(configService, dbConfig);
-            },
-            inject: [ConfigService],
-          }),
-        ],
-        controllers: [],
-        providers: [],
-        exports: [],
-      };
-    }
+  public static forRoot(dbConfig: DbConfig) {
+    return {
+      module: DBModule,
+      imports: [
+        TypeOrmModule.forRootAsync({
+          imports: [ConfigModule],
+          useFactory: (configService: ConfigService) => {
+            return DBModule.getConnectionOptions(configService, dbConfig);
+          },
+          inject: [ConfigService],
+        }),
+      ],
+      controllers: [],
+      providers: [],
+      exports: [],
+    };
   }
 }

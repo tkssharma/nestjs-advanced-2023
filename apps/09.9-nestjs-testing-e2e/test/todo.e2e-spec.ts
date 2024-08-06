@@ -33,30 +33,18 @@ describe('TodoModule', () => {
   });
 
   describe('GET: todo/:id', () => {
-    beforeEach(() => {
-      jest.spyOn(mockDataBaseService, 'get');
-    });
-
     it('should return OK', async () => {
       await request(app.getHttpServer()).get('/todo/1').expect(200, {});
     });
   });
 
   describe('GET: todo/all', () => {
-    beforeEach(() => {
-      jest.spyOn(mockDataBaseService, 'getAll');
-    });
-
     it('should return OK', async () => {
       await request(app.getHttpServer()).get('/todo/all').expect(200, {});
     });
   });
 
   describe('POST: todo', () => {
-    beforeEach(() => {
-      jest.spyOn(mockDataBaseService, 'create');
-    });
-
     it('should return OK', async () => {
       await request(app.getHttpServer()).post('/todo').expect(201, {});
     });

@@ -14,11 +14,12 @@
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
-    "test": "jest",
+    "test": "npm run test:ci",
+    "test:ci": "NODE_ENV=CI jest --ci none --testPathPattern='src' --forceExit true --collectCoverage --maxWorkers 2 --detectOpenHandles",
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config jest.config-e2e.js"
   },
   "dependencies": {
     "@dev/config": "*",
@@ -34,12 +35,14 @@
     "@nestjs/mapped-types": "*",
     "@nestjs/passport": "^10.0.3",
     "@nestjs/platform-express": "^9.0.0",
+    "@nestjs/swagger": "^7.1.1",
     "@nestjs/typeorm": "^9.0.1",
     "axios": "^1.4.0",
     "bcrypt": "^5.0.1",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.1",
     "dotenv": "^10.0.0",
+    "express-basic-auth": "^1.2.1",
     "node-mocks-http": "^1.15.0",
     "passport": "^0.6.0",
     "passport-jwt": "^4.0.0",
@@ -47,6 +50,7 @@
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^7.2.0",
+    "swagger-ui-express": "^5.0.1",
     "typeorm": "^0.3.20"
   },
   "devDependencies": {

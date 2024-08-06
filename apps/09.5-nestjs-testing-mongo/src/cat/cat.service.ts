@@ -7,6 +7,7 @@ import { Cat } from './interfaces/cat.interface';
 
 @Injectable()
 export class CatService {
+  // mock this model and unit tests are done !!
   constructor(@InjectModel('Cat') private readonly catModel: Model<CatDoc>) {}
 
   async getAll(): Promise<Cat[]> {

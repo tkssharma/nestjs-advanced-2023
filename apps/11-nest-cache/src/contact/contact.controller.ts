@@ -24,7 +24,6 @@ export class ContactController {
   constructor(private contactService: ContactService) {}
 
   @UseInterceptors(CacheInterceptor)
-  // Automatically cache the response for this endpoint
   @CacheKey('__key')
   @CacheTTL(60000)
   @Get('')

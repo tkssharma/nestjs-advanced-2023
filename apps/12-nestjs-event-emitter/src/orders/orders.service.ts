@@ -32,7 +32,6 @@ export class OrdersService {
     orderCreatedEvent.name = order.name;
     orderCreatedEvent.description = order.description;
     this.eventEmitter.emit('order.created', orderCreatedEvent);
-
     return order;
   }
 }

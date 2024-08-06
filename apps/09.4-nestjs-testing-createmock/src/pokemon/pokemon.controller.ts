@@ -11,3 +11,4 @@ export class PokemonController {
     return this.pokemonService.getPokemon(id);
   }
 }
+// validation Pipe Custom

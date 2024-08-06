@@ -1,0 +1,49 @@
+default:
+  image: node:16-alpine
+  interruptible: true
+
+services:
+  - postgres:12.2-alpine
+
+variables:
+  POSTGRES_DB: test-api-testing
+  POSTGRES_USER: api
+  POSTGRES_PASSWORD: development_pass
+  POSTGRES_HOST_AUTH_METHOD: trust
+
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - node_modules/
+
+stages:
+  - dev
+  - production
+  - merge_request
+
+dev:
+  stage: dev
+  script:
+    - npm ci
+    - npm run build
+    - npm test
+  only:
+    - develop
+
+production:
+  stage: production
+  script:
+    - npm ci
+    - npm run build
+    - npm test
+  only:
+    - master
+
+merge_request:
+  stage: merge_request
+  script:
+    - npm ci
+    - npm run build
+    - npm test
+  only:
+    - merge_requests

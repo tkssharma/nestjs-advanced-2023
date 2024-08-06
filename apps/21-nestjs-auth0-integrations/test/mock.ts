@@ -1,0 +1,25 @@
+export const restaurants = {
+  name: 'uber clone',
+  description: 'uber clone',
+  latitude: '11',
+  longitude: '11',
+  contact_no: '8998978987',
+  thumbnails: [
+    'https://logos-world.net/wp-content/uploads/2021/08/Dominos-Logo.png',
+  ],
+  delivery_options: 'delivery_options',
+  delivery_time: 30,
+  average_price: 500,
+  pickup_options: 'pickup_options',
+  opens_at: '2023-10-05T14:48:00.000Z',
+  closes_at: '2023-10-05T14:48:00.000Z',
+  website_url: 'https://dominos.com',
+  address: {
+    name: 'Uber Eats',
+    city: 'jaipur',
+    state: 'Raj',
+    street: 'Raj',
+    pincode: '345254',
+    country: 'India',
+  },
+};
