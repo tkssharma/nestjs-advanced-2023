@@ -40,12 +40,12 @@ import {
   SearchQueryDto,
   getRestaurantByIdDto,
 } from '../dto/restaurant.dto';
-import { RolesAllowed } from '../../../core/decorator/role.decorator';
-import { Roles } from '../../../core/roles';
-import { RolesGuard } from '../../../core/guard/role.guard';
+import { RolesAllowed } from '@core/decorator/role.decorator';
+import { Roles } from '@core/roles';
+import { RolesGuard } from '@core/guard/role.guard';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { uploadFile } from '../../../core/decorator/file.decorator';
-import { imageFileFilter } from '../../../core/filters/file.filter';
+import { uploadFile } from '@core/decorator/file.decorator';
+import { imageFileFilter } from '@core/filters/file.filter';
 import { GetCurrentUser, User, UserData, UserMetaData } from '../interface';
 
 const SIZE = 2 * 1024 * 1024;

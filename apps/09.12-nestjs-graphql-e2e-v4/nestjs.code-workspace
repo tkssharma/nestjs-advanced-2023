@@ -1,0 +1,10 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../09.11-nestjs-testing-e2e-v3"
+		}
+	]
+}
