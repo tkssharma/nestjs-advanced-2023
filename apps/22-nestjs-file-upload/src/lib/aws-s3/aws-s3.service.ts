@@ -4,19 +4,18 @@ import { Injectable } from '@nestjs/common';
 import moment from 'moment';
 
 // Internal.
-import { AppConfigService } from '@lib/config';
 
 // Code.
 @Injectable()
 export default class AWSS3Service {
   private client: AWS.S3;
 
-  constructor(private configService: AppConfigService) {
+  constructor() {
     this.client = new S3({
       region: 'eu-central-1',
       credentials: {
-        accessKeyId: process.env.MERCANIS_AWS_ACCESS_KEY!,
-        secretAccessKey: process.env.MERCANIS_AWS_SECRET_ACCESS!,
+        accessKeyId: process.env.AWS_ACCESS_KEY!,
+        secretAccessKey: process.env.AWS_SECRET_ACCESS!,
       },
     });
   }
@@ -24,7 +23,7 @@ export default class AWSS3Service {
   async upload(file: any, key: string, originalname: string) {
     // TODO: ideally the bucket must be parametrized here
     const params = {
-      Bucket: this.configService.aws.s3MediumBucket,
+      Bucket: process.env.AWS_BUCKET_NAME,
       Key: key,
       Body: file,
     };
@@ -45,7 +44,7 @@ export default class AWSS3Service {
   async getPresignedUrl(key: string, originalname: string) {
     // TODO: ideally the bucket must be parametrized here
     const params = {
-      Bucket: this.configService.aws.s3MediumBucket,
+      Bucket: process.env.AWS_BUCKET_NAME,
       Key: key,
       Expires: 60 * 60 * 24 * 7,
       ResponseContentDisposition:

@@ -2,13 +2,12 @@
 import { Global, Module } from '@nestjs/common';
 
 // Internal.
-import { AppConfigModule } from '@lib/config';
 import AWSS3Service from './aws-s3.service';
 
 // Code.
 @Global()
 @Module({
-  imports: [AppConfigModule],
+  imports: [],
   providers: [AWSS3Service],
   exports: [AWSS3Service],
 })

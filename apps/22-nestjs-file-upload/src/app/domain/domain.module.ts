@@ -13,9 +13,11 @@ import { HealthController } from '../controllers/app.controller';
 import { AuthMiddleware } from '../auth/auth-middleware';
 import { RouteInfo } from '@nestjs/common/interfaces';
 import { AuthModule } from '../auth/auth.module';
+import { AWSS3Module } from '../../lib/aws-s3';
 
 @Module({
   imports: [
+    AWSS3Module,
     AuthModule,
     TypeOrmModule.forRoot({
       type: 'postgres',

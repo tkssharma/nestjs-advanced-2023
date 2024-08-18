@@ -37,6 +37,7 @@ export class ConfigService {
       logLevel: env.LOG_LEVEL || DEFAULT_CONFIG.logLevel,
       newRelicKey: env.NEW_RELIC_KEY || DEFAULT_CONFIG.newRelicKey,
       auth: this.parseAuthConfigFromEnv(env),
+      aws: this.getBucket(env),
       azure: this.parseAzureConfigFromEnv(env, DEFAULT_CONFIG.azure),
       swagger: this.parseSwaggerConfigFromEnv(env, DEFAULT_CONFIG.swagger),
       metabase: this.parseMetabaseConfigFromEnv(env),
@@ -46,6 +47,11 @@ export class ConfigService {
     return {
       siteUrl: env.METABASE_SITE_URL,
       secretKey: env.METABASE_SECRET_KEY,
+    };
+  }
+  private getBucket(env: NodeJS.ProcessEnv): any {
+    return {
+      bucket: env.BUCKT_NAME,
     };
   }
   private parseAzureConfigFromEnv(

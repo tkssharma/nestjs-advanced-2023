@@ -8,6 +8,10 @@ export interface FileUpload {
   connectionString?: string;
   containerName?: string;
 }
+
+export interface S3FileUpload {
+  bucket?: string;
+}
 export interface SwaggerUserConfig {
   username?: string;
   password?: string;
@@ -62,6 +66,8 @@ export interface ConfigData {
   db: ConfigDBData;
 
   azure: AzureConfig;
+
+  aws: S3FileUpload;
 
   swagger: SwaggerUserConfig;
 

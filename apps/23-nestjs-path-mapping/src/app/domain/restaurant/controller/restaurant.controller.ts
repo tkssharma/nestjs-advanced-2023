@@ -46,6 +46,7 @@ import { RolesGuard } from '@core/guard/role.guard';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { uploadFile } from '@core/decorator/file.decorator';
 import { imageFileFilter } from '@core/filters/file.filter';
+
 import { GetCurrentUser, User, UserData, UserMetaData } from '../interface';
 
 const SIZE = 2 * 1024 * 1024;
@@ -64,9 +65,6 @@ const VALID_UPLOADS_MIME_TYPES = ['image/jpeg', 'image/png'];
 export class RestaurantController {
   constructor(private readonly service: RestaurantService) {}
 
-  @UseGuards(RolesGuard)
-  // add all roles which we want to allow
-  @RolesAllowed(Roles['admin'])
   @HttpCode(HttpStatus.OK)
   @ApiConsumes('application/json')
   @ApiNotFoundResponse({ description: NO_ENTITY_FOUND })
@@ -84,9 +82,6 @@ export class RestaurantController {
     return await this.service.search(query);
   }
 
-  @UseGuards(RolesGuard)
-  // add all roles which we want to allow
-  @RolesAllowed(Roles['admin'])
   @HttpCode(HttpStatus.CREATED)
   @ApiConsumes('application/json')
   @ApiNotFoundResponse({ description: NO_ENTITY_FOUND })
@@ -108,9 +103,6 @@ export class RestaurantController {
     return await this.service.createRestaurant(payload);
   }
 
-  @UseGuards(RolesGuard)
-  // add all roles which we want to allow
-  @RolesAllowed(Roles['admin'])
   @HttpCode(HttpStatus.OK)
   @ApiConsumes('application/json')
   @ApiNotFoundResponse({ description: NO_ENTITY_FOUND })
@@ -128,9 +120,7 @@ export class RestaurantController {
     return await this.service.getAllMyRestaurants(user);
   }
 
-  @UseGuards(RolesGuard)
   // add all roles which we want to allow
-  @RolesAllowed(Roles['admin'])
   @HttpCode(HttpStatus.OK)
   @ApiConsumes('application/json')
   @ApiNotFoundResponse({ description: NO_ENTITY_FOUND })

@@ -12,6 +12,9 @@ export const DEFAULT_CONFIG: ConfigData = {
     username: '',
     password: '',
   },
+  aws: {
+    bucket: '',
+  },
   metabase: {
     siteUrl: '',
     secretKey: '',

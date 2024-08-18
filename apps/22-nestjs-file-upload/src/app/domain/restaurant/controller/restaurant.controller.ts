@@ -19,6 +19,7 @@ import {
   ValidationPipe,
   Req,
   BadRequestException,
+  UploadedFiles,
 } from '@nestjs/common';
 import {
   ApiBearerAuth,
@@ -43,8 +44,11 @@ import {
 import { RolesAllowed } from '../../../core/decorator/role.decorator';
 import { Roles } from '../../../core/roles';
 import { RolesGuard } from '../../../core/guard/role.guard';
-import { FileInterceptor } from '@nestjs/platform-express';
-import { uploadFile } from '../../../core/decorator/file.decorator';
+import { FileInterceptor, FilesInterceptor } from '@nestjs/platform-express';
+import {
+  uploadFile,
+  uploadFiles,
+} from '../../../core/decorator/file.decorator';
 import { imageFileFilter } from '../../../core/filters/file.filter';
 import { GetCurrentUser, User, UserData, UserMetaData } from '../interface';
 
@@ -128,6 +132,7 @@ export class RestaurantController {
     return await this.service.getAllMyRestaurants(user);
   }
 
+  // multiple file upload
   @UseGuards(RolesGuard)
   // add all roles which we want to allow
   @RolesAllowed(Roles['admin'])
@@ -148,29 +153,79 @@ export class RestaurantController {
     return await this.service.getRestaurantById(param);
   }
 
-  @Post('upload')
+  // multiple file upload
+  @UseGuards(RolesGuard)
+  // add all roles which we want to allow
+  @RolesAllowed(Roles['admin'])
+  // one file upload
+  @Post('one-file')
   // custom decorator
+  // ONE FILE UPLOAD ONLY
   @uploadFile('file')
   @ApiForbiddenResponse({ description: 'UNAUTHORIZED_REQUEST' })
   @ApiUnprocessableEntityResponse({ description: 'BAD_REQUEST' })
   @ApiInternalServerErrorResponse({ description: INTERNAL_SERVER_ERROR })
   @UseInterceptors(FileInterceptor('file'))
   @ApiConsumes('multipart/form-data')
-  public async uploadFile(
+  public async uploadFileOne(
     @UploadedFile(
       new ParseFilePipeBuilder()
-        .addFileTypeValidator({ fileType: /(jpg)$/ })
+        .addFileTypeValidator({ fileType: /(jpg|png)$/ })
         .addMaxSizeValidator({ maxSize: SIZE })
         .build({
           errorHttpStatusCode: HttpStatus.UNPROCESSABLE_ENTITY,
         }),
     )
-    file,
+    file: Express.Multer.File,
   ) {
-    return file;
+    try {
+      return file;
+    } catch (err) {
+      throw err;
+    }
   }
 
-  @Post('uploadv2')
+  // multiple file upload
+  @UseGuards(RolesGuard)
+  // add all roles which we want to allow
+  // upload many files together P
+  @RolesAllowed(Roles['admin'])
+  @Post('many-files')
+  // custom decorator
+  @uploadFiles('file')
+  @ApiForbiddenResponse({ description: 'UNAUTHORIZED_REQUEST' })
+  @ApiUnprocessableEntityResponse({ description: 'BAD_REQUEST' })
+  @ApiInternalServerErrorResponse({ description: INTERNAL_SERVER_ERROR })
+  @UseInterceptors(FilesInterceptor('file'))
+  // all plural here
+  // validation with many files
+  @ApiConsumes('multipart/form-data')
+  public async uploadFiles(
+    @UploadedFiles(
+      // it will validate each and every files
+      new ParseFilePipeBuilder()
+        .addFileTypeValidator({ fileType: /(jpg|png)$/ })
+        .addMaxSizeValidator({ maxSize: SIZE })
+        .build({
+          errorHttpStatusCode: HttpStatus.UNPROCESSABLE_ENTITY,
+        }),
+    )
+    files: Array<Express.Multer.File>,
+  ) {
+    try {
+      // once we have files lets upload them in a Loop
+      console.log(files);
+      return await this.service.upload(files);
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  // multiple file upload
+  @UseGuards(RolesGuard)
+  // add all roles which we want to allow
+  @RolesAllowed(Roles['admin'])
+  @Post('custom-validation')
   // custom decorator
   @uploadFile('file')
   @ApiForbiddenResponse({ description: 'UNAUTHORIZED_REQUEST' })
@@ -183,6 +238,7 @@ export class RestaurantController {
   )
   @ApiConsumes('multipart/form-data')
   public async uploadFilev2(@Req() req: any, @UploadedFile() file) {
+    console.log(file);
     if (!file || req.fileValidationError) {
       throw new BadRequestException(
         'invalid file provided, allowed *.pdf single file for Invoice',

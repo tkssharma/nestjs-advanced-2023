@@ -1,5 +1,5 @@
 {
-  "name": "@dev/nestjs-file-upload-validation",
+  "name": "@dev/nestjs-path-mapping",
   "version": "0.0.1",
   "description": "",
   "author": "",
@@ -31,11 +31,13 @@
     "migration:create": "typeorm-ts-node-commonjs migration:create"
   },
   "dependencies": {
+    "@fastify/static": "^7.0.4",
     "@golevelup/ts-jest": "^0.3.5",
     "@nestjs/common": "^9.0.0",
     "@nestjs/core": "^9.0.0",
     "@nestjs/mapped-types": "*",
     "@nestjs/platform-express": "^9.0.0",
+    "@nestjs/platform-fastify": "9.0.0",
     "@nestjs/swagger": "^7.1.1",
     "@nestjs/typeorm": "^9.0.1",
     "class-transformer": "^0.5.1",
@@ -47,6 +49,7 @@
     "helmet": "^7.1.0",
     "jsonwebtoken": "^9.0.2",
     "jwks-rsa": "^3.1.0",
+    "module-alias": "^2.2.3",
     "moment": "^2.30.1",
     "mysql2": "^3.2.0",
     "pg": "^8.12.0",

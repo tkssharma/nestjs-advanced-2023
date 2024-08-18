@@ -9,6 +9,7 @@ import {
   Brackets,
   DataSource,
 } from 'typeorm';
+import { v4 as uuidv4 } from 'uuid';
 
 import { NotFoundException } from '@nestjs/common';
 import { RestaurantEntity } from '../entity/restaurant.entity';
@@ -21,6 +22,7 @@ import {
 import { off } from 'process';
 import { groupBy } from '../utility';
 import { UserMetaData } from '../interface';
+import AWSS3Service from '../../../../lib/aws-s3/aws-s3.service';
 
 @Injectable()
 export class RestaurantService {
@@ -29,6 +31,7 @@ export class RestaurantService {
     @InjectRepository(RestaurantEntity)
     private restaurantRepo: Repository<RestaurantEntity>,
     private readonly connection: Connection,
+    private readonly s3: AWSS3Service,
   ) {}
 
   async getRestaurantById(param: getRestaurantByIdDto) {
@@ -38,6 +41,31 @@ export class RestaurantService {
       select: { id: true, name: true },
     });
     return response;
+  }
+
+  async upload(files: Array<Express.Multer.File>) {
+    try {
+      const fileuploadResults = [];
+      for (const file of files) {
+        const fileName = `${uuidv4()}-${file.originalname}`;
+        const uploadFileResponse = await this.uploadS3(
+          file.buffer,
+          fileName,
+          file.originalname,
+        );
+        fileuploadResults.push({
+          ...uploadFileResponse,
+          success: true,
+        });
+      }
+      return fileuploadResults;
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async uploadS3(file: Buffer, key: string, originalname: string) {
+    return this.s3.upload(file, key, originalname);
   }
 
   async getAllMyRestaurants(user: UserMetaData) {

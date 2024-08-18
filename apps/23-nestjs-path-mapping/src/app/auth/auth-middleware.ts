@@ -16,9 +16,17 @@ export class AuthMiddleware implements NestMiddleware {
       );
     }
     // we will add this logic
+    /*
     const { roles, email, auth0_id } = await this.authorizationService.init(
       authorization,
-    );
+    ); */
+
+    const { roles, email, auth0_id } = {
+      roles: ['admin'],
+      email: 'test@gmail.com',
+      auth0_id: '23424',
+    };
+
     // if all good we will get data
     // set user session
     console.log(roles, email, auth0_id);
