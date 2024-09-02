@@ -1,0 +1,20 @@
+{
+  "setupFiles": ["./setEnvVars.js"],
+  "moduleFileExtensions": ["js", "json", "ts"],
+  "rootDir": ".",
+  "testEnvironment": "node",
+  "testRegex": ".e2e-spec.ts$",
+  "transform": {
+    "^.+\\.(t|j)s$": "ts-jest"
+  },
+  "moduleNameMapper": {
+    "^@domain(.*)$": "<rootDir>/src/app/domain/$1",
+    "^@core(.*)$": "<rootDir>/src/app/core/$1",
+    "^@auth(.*)$": "<rootDir>/src/app/auth/$1",
+    "^@lib(.*)$": "<rootDir>/src/lib/$1",
+    "^@db(.*)$": "<rootDir>/src/db/$1",
+    "^@logger(.*)$": "<rootDir>/src/logger/$1",
+    "^@config(.*)$": "<rootDir>/src/config/$1",
+    "^@swagger(.*)$": "<rootDir>/src/swagger/$1"
+  }
+}
