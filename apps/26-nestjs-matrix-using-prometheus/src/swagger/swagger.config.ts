@@ -5,7 +5,7 @@ import { SwaggerConfig } from './swagger.interface';
  * Change this to suit your app!
  */
 export const SWAGGER_CONFIG: SwaggerConfig = {
-  title: 'Nest JS  2024',
+  title: 'Nest JS Testing 2024',
   description: ' api specs',
   version: '1.0',
   tags: [],

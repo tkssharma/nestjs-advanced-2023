@@ -9,8 +9,6 @@ import { INestApplicationContext } from '@nestjs/common';
 let cachedApp: INestApplicationContext | undefined;
 
 export const bootstrap = async (context: Context) => {
-  // for lambda it will be inside cache after first invoke
-  // so we don't need to initlize nestjs app everytime !!
   if (!cachedApp) {
     const app = await NestFactory.createApplicationContext(AppModule);
     cachedApp = app;
